@@ -15,7 +15,7 @@ yoy <- function(x, merge=FALSE) {
   yr_aggr <- apply.yearly(x, colSums)
   colnames(yr_aggr) <- paste0(colnames(yr_aggr), "___yearly.value")
   z <- as.list(yr_aggr)
-  yr_yoy <- lapply(z, function(x){((x - lag(x, 4)) / x) * 100 })
+  yr_yoy <- lapply(z, function(x){((x - lag(x)) / x) * 100 })
   yr_yoy_matrix <- do.call(cbind, yr_yoy)
   cx <- colnames(x)
   new_col_names <- paste0(cx, "___per.change.yoy")
